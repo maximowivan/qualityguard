@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - QualityGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-800">Quality<span class="text-blue-600">Guard</span></h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="contacts.html" class="nav-link active">Контакты</a>
+                    <a href="admin.html" class="nav-link text-red-600" id="admin-link">Админ</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="openAuthModal('login')" 
+                            class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                        Вход
+                    </button>
+                    <button onclick="openAuthModal('register')" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Регистрация
+                    </button>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="nav-link-mobile">Главная</a>
+                    <a href="about.html" class="nav-link-mobile">О нас</a>
+                    <a href="services.html" class="nav-link-mobile">Услуги</a>
+                    <a href="contacts.html" class="nav-link-mobile active">Контакты</a>
+                    <a href="admin.html" class="nav-link-mobile text-red-600">Админ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Заголовок -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Контакты</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Свяжитесь с нами любым удобным способом
+            </p>
+        </div>
+
+        <!-- Контактная информация -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- Адрес -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-map-marker-alt text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Адрес офиса</h3>
+                <p class="text-gray-600 mb-2">Москва, ул. Тестировщиков, 15</p>
+                <p class="text-gray-600">Бизнес-центр "QA Tower", 7 этаж</p>
+            </div>
+
+            <!-- Телефон -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-phone text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Телефон</h3>
+                <p class="text-gray-600 mb-2">+7 (495) 123-45-67</p>
+                <p class="text-gray-600">Пн-Пт: 9:00 - 18:00</p>
+            </div>
+
+            <!-- Email -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-envelope text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Email</h3>
+                <p class="text-gray-600 mb-2">info@qualityguard.ru</p>
+                <p class="text-gray-600">support@qualityguard.ru</p>
+            </div>
+        </div>
+
+        <!-- Карта и форма -->
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <!-- Карта -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Мы на карте</h3>
+                <div class="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt text-4xl text-gray-400 mb-4"></i>
+                        <p class="text-gray-600">Интерактивная карта</p>
+                        <p class="text-sm text-gray-500">(Для демонстрации)</p>
+                    </div>
+                </div>
+                <div class="mt-6 space-y-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-subway text-gray-400 mr-3"></i>
+                        <div>
+                            <p class="font-medium">Метро</p>
+                            <p class="text-gray-600">Станция "Технопарк", 5 минут пешком</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-parking text-gray-400 mr-3"></i>
+                        <div>
+                            <p class="font-medium">Парковка</p>
+                            <p class="text-gray-600">Подземная парковка на 200 мест</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма обратной связи -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Напишите нам</h3>
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <form id="contact-page-form">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Ваше имя *</label>
+                            <input type="text" required
+                                   class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Email *</label>
+                            <input type="email" required
+                                   class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Тема сообщения</label>
+                            <select class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option value="">Выберите тему</option>
+                                <option value="consultation">Консультация</option>
+                                <option value="service">Заказ услуги</option>
+                                <option value="cooperation">Сотрудничество</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Сообщение *</label>
+                            <textarea rows="5" required
+                                      class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        
+                        <button type="button" onclick="submitContactPage()" 
+                                class="w-full py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Часто задаваемые вопросы -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-12">Часто задаваемые вопросы</h3>
+            
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="w-full p-6 text-left flex justify-between items-center" 
+                            onclick="toggleFAQ(1)">
+                        <span class="font-bold">Какой срок выполнения проекта?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="faq-1" class="px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Сроки зависят от сложности проекта. Средний срок выполнения 
+                            проекта по тестированию составляет 2-4 недели. Для комплексного 
+                            аудит-проекта требуется 1-2 месяца.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="w-full p-6 text-left flex justify-between items-center" 
+                            onclick="toggleFAQ(2)">
+                        <span class="font-bold">Предоставляете ли вы тестовое задание?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="faq-2" class="px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Да, мы предоставляем бесплатное тестовое задание для оценки 
+                            небольших проектов (до 10 часов работы). Это позволяет вам 
+                            оценить качество нашей работы перед заключением договора.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="w-full p-6 text-left flex justify-between items-center" 
+                            onclick="toggleFAQ(3)">
+                        <span class="font-bold">Какие гарантии вы предоставляете?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="faq-3" class="px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Мы гарантируем конфиденциальность ваших данных, соблюдение сроков, 
+                            указанных в договоре, и качество выполнения работ. В случае 
+                            невыполнения обязательств предусмотрены штрафные санкции.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="w-full p-6 text-left flex justify-between items-center" 
+                            onclick="toggleFAQ(4)">
+                        <span class="font-bold">Работаете ли вы с зарубежными клиентами?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="faq-4" class="px-6 pb-6 hidden">
+                        <p class="text-gray-600">
+                            Да, мы работаем с клиентами по всему миру. Все наши специалисты 
+                            владеют английским языком. Возможна оплата в различных валютах 
+                            и работа по международным контрактам.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-blue-400 text-2xl mr-3"></i>
+                        <h3 class="text-2xl font-bold">Quality<span class="text-blue-400">Guard</span></h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Лидер в области контроля качества IT-проектов с 2015 года.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Услуги</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Тестирование ПО</a></li>
+                        <li><a href="#" class="hover:text-white transition">Автоматизация QA</a></li>
+                        <li><a href="#" class="hover:text-white transition">Аудит безопасности</a></li>
+                        <li><a href="#" class="hover:text-white transition">Консалтинг</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Контакты</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-blue-400"></i>
+                            Москва, ул. Тестировщиков, 15
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-blue-400"></i>
+                            +7 (495) 123-45-67
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            info@qualityguard.ru
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Подписка</h4>
+                    <p class="text-gray-400 mb-4">Подпишитесь на наши новости</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email" 
+                               class="flex-grow p-3 rounded-l-lg text-gray-800">
+                        <button class="bg-blue-600 px-4 rounded-r-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 QualityGuard. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="db/database.js"></script>
+    
+    <script>
+        // Функции для страницы контактов
+        function toggleFAQ(id) {
+            const faq = document.getElementById(`faq-${id}`);
+            const icon = faq.previousElementSibling.querySelector('i');
+            
+            faq.classList.toggle('hidden');
+            if (faq.classList.contains('hidden')) {
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            } else {
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            }
+        }
+        
+        function submitContactPage() {
+            const form = document.getElementById('contact-page-form');
+            const inputs = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            
+            if (isValid) {
+                showNotification('Сообщение отправлено! Мы ответим вам в течение 24 часов.', 'success');
+                form.reset();
+            } else {
+                showNotification('Пожалуйста, заполните обязательные поля', 'error');
+            }
+        }
+        
+        // Инициализация FAQ
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqButtons = document.querySelectorAll('[onclick^="toggleFAQ"]');
+            faqButtons.forEach(btn => {
+                const faqId = btn.getAttribute('onclick').match(/\d+/)[0];
+                const faqContent = document.getElementById(`faq-${faqId}`);
+                if (faqContent) {
+                    faqContent.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

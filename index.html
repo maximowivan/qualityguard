@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualityGuard - IT Quality Assurance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Чердак (Header) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-800">Quality<span class="text-blue-600">Guard</span></h1>
+                </div>
+                
+                <!-- Навигация -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link active">Главная</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                    <a href="admin.html" class="nav-link text-red-600" id="admin-link">Админ</a>
+                </nav>
+                
+                <!-- Кнопки входа/регистрации -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openAuthModal('login')" 
+                            class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                        Вход
+                    </button>
+                    <button onclick="openAuthModal('register')" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Регистрация
+                    </button>
+                </div>
+                
+                <!-- Мобильное меню -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Мобильная навигация -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="nav-link-mobile active">Главная</a>
+                    <a href="about.html" class="nav-link-mobile">О нас</a>
+                    <a href="services.html" class="nav-link-mobile">Услуги</a>
+                    <a href="contacts.html" class="nav-link-mobile">Контакты</a>
+                    <a href="admin.html" class="nav-link-mobile text-red-600">Админ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Герой-секция -->
+        <section class="mb-16">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                        Гарантия качества <span class="text-blue-600">IT-проектов</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-8">
+                        Профессиональный контроль качества программного обеспечения. 
+                        Мы обеспечиваем надежность, безопасность и производительность ваших IT-решений.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="openContactModal()" 
+                                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Заказать аудит
+                        </button>
+                        <a href="services.html" 
+                           class="px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition">
+                            Наши услуги
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="QA Testing" 
+                         class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl">
+                        <div class="text-3xl font-bold text-blue-600">98%</div>
+                        <div class="text-gray-600">Успешных проектов</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Наши преимущества</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bug text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Тестирование любой сложности</h3>
+                    <p class="text-gray-600">От unit-тестов до нагрузочного тестирования</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Автоматизация процессов</h3>
+                    <p class="text-gray-600">Сокращаем время тестирования на 70%</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-shield text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Безопасность данных</h3>
+                    <p class="text-gray-600">Соблюдение стандартов GDPR и ISO 27001</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Статистика -->
+        <section class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">150+</div>
+                    <div class="text-blue-100">Завершенных проектов</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">98%</div>
+                    <div class="text-blue-100">Довольных клиентов</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">40+</div>
+                    <div class="text-blue-100">Сертифицированных специалистов</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-blue-100">Техническая поддержка</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал (Footer) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-blue-400 text-2xl mr-3"></i>
+                        <h3 class="text-2xl font-bold">Quality<span class="text-blue-400">Guard</span></h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Лидер в области контроля качества IT-проектов с 2015 года.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Услуги</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Тестирование ПО</a></li>
+                        <li><a href="#" class="hover:text-white transition">Автоматизация QA</a></li>
+                        <li><a href="#" class="hover:text-white transition">Аудит безопасности</a></li>
+                        <li><a href="#" class="hover:text-white transition">Консалтинг</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Контакты</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-blue-400"></i>
+                            Москва, ул. Тестировщиков, 15
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-blue-400"></i>
+                            +7 (495) 123-45-67
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            info@qualityguard.ru
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Подписка</h4>
+                    <p class="text-gray-400 mb-4">Подпишитесь на наши новости</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email" 
+                               class="flex-grow p-3 rounded-l-lg text-gray-800">
+                        <button class="bg-blue-600 px-4 rounded-r-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 QualityGuard. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно авторизации/регистрации -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 id="auth-title" class="text-2xl font-bold">Вход</h3>
+                        <button onclick="closeAuthModal()" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="auth-form">
+                        <div id="register-fields" class="hidden">
+                            <input type="text" id="name" placeholder="Имя" 
+                                   class="w-full p-4 border rounded-lg mb-4">
+                        </div>
+                        
+                        <input type="email" id="email" placeholder="Email" 
+                               class="w-full p-4 border rounded-lg mb-4">
+                        
+                        <input type="password" id="password" placeholder="Пароль" 
+                               class="w-full p-4 border rounded-lg mb-6">
+                        
+                        <button type="button" onclick="handleAuth()" 
+                                id="auth-button" 
+                                class="w-full py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Войти
+                        </button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="#" class="text-blue-600 hover:text-blue-800">
+                            Забыли пароль?
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <button onclick="switchAuthMode()" id="switch-auth" 
+                                class="text-blue-600 hover:text-blue-800">
+                            Создать новый аккаунт
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно профиля -->
+    <div id="profile-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-2xl font-bold">Мой профиль</h3>
+                        <button onclick="closeProfileModal()" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="profile-content">
+                        <!-- Контент загружается через JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно контактов -->
+    <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-2xl font-bold">Связаться с нами</h3>
+                        <button onclick="closeContactModal()" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <form id="full-contact-form">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" id="contact-name" placeholder="Ваше имя" required
+                                   class="p-4 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="email" id="contact-email" placeholder="Email" required
+                                   class="p-4 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <input type="text" id="contact-phone" placeholder="Телефон" 
+                               class="p-4 border rounded-lg mb-6 w-full focus:ring-2 focus:ring-blue-500">
+                        
+                        <select id="contact-service" class="p-4 border rounded-lg mb-6 w-full focus:ring-2 focus:ring-blue-500">
+                            <option value="">Выберите услугу</option>
+                            <option value="testing">Тестирование ПО</option>
+                            <option value="automation">Автоматизация QA</option>
+                            <option value="security">Аудит безопасности</option>
+                            <option value="consulting">Консалтинг</option>
+                        </select>
+                        
+                        <textarea id="contact-message" placeholder="Опишите ваш проект" rows="6" required
+                                  class="w-full p-4 border rounded-lg mb-6 focus:ring-2 focus:ring-blue-500"></textarea>
+                        
+                        <button type="button" onclick="submitFullContact()" 
+                                class="w-full py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                            Отправить заявку
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="db/database.js"></script>
+</body>
+</html>

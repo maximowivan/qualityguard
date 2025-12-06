@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - QualityGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-800">Quality<span class="text-blue-600">Guard</span></h1>
+                    <span class="ml-4 px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">
+                        Админ-панель
+                    </span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                    <a href="admin.html" class="nav-link active">Админ</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="logoutUser()" 
+                            class="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Выйти
+                    </button>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="nav-link-mobile">Главная</a>
+                    <a href="about.html" class="nav-link-mobile">О нас</a>
+                    <a href="services.html" class="nav-link-mobile">Услуги</a>
+                    <a href="contacts.html" class="nav-link-mobile">Контакты</a>
+                    <a href="admin.html" class="nav-link-mobile active">Админ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Проверка прав администратора -->
+        <div id="admin-check" class="hidden">
+            <div class="text-center py-12">
+                <i class="fas fa-lock text-5xl text-gray-400 mb-6"></i>
+                <h2 class="text-2xl font-bold mb-4">Доступ запрещен</h2>
+                <p class="text-gray-600 mb-8">У вас нет прав для доступа к этой странице</p>
+                <a href="index.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    На главную
+                </a>
+            </div>
+        </div>
+
+        <!-- Админ-панель -->
+        <div id="admin-panel">
+            <!-- Заголовок -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Административная панель</h2>
+                <p class="text-gray-600">Управление пользователями и заявками</p>
+            </div>
+
+            <!-- Статистика -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Всего пользователей</p>
+                            <p id="total-users" class="text-2xl font-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-file-alt text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Всего заявок</p>
+                            <p id="total-applications" class="text-2xl font-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-clock text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Новые заявки</p>
+                            <p id="new-applications" class="text-2xl font-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-chart-line text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Конверсия</p>
+                            <p id="conversion-rate" class="text-2xl font-bold">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Поиск и фильтры -->
+            <div class="bg-white rounded-xl shadow p-6 mb-8">
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Поиск</label>
+                        <input type="text" id="search-input" placeholder="Поиск по имени, email или сообщению" 
+                               class="w-full p-3 border rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Статус</label>
+                        <select id="status-filter" class="w-full p-3 border rounded-lg">
+                            <option value="">Все статусы</option>
+                            <option value="new">Новая</option>
+                            <option value="processing">В обработке</option>
+                            <option value="completed">Завершена</option>
+                            <option value="cancelled">Отменена</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Услуга</label>
+                        <select id="service-filter" class="w-full p-3 border rounded-lg">
+                            <option value="">Все услуги</option>
+                            <option value="testing">Тестирование ПО</option>
+                            <option value="automation">Автоматизация QA</option>
+                            <option value="security">Аудит безопасности</option>
+                            <option value="consulting">Консалтинг</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <button onclick="clearFilters()" 
+                            class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
+                        Сбросить фильтры
+                    </button>
+                    <button onclick="refreshData()" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        <i class="fas fa-sync-alt mr-2"></i>Обновить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Таблица заявок -->
+            <div class="bg-white rounded-xl shadow overflow-hidden mb-8">
+                <div class="p-6 border-b">
+                    <h3 class="text-xl font-bold">Заявки от клиентов</h3>
+                </div>
+                
+                <div class="table-container">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Услуга</th>
+                                <th>Дата</th>
+                                <th>Статус</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applications-table">
+                            <!-- Данные загружаются через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="p-4 border-t flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        Показано <span id="shown-count">0</span> из <span id="total-count">0</span> заявок
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="changePage(-1)" 
+                                class="px-3 py-1 border rounded-lg hover:bg-gray-50">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="current-page" class="px-3 py-1">1</span>
+                        <button onclick="changePage(1)" 
+                                class="px-3 py-1 border rounded-lg hover:bg-gray-50">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Детали заявки -->
+            <div id="application-details" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+                <div class="flex items-center justify-center min-h-screen">
+                    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+                        <div class="p-8">
+                            <div class="flex justify-between items-center mb-8">
+                                <h3 class="text-2xl font-bold">Детали заявки</h3>
+                                <button onclick="closeApplicationDetails()" 
+                                        class="text-gray-500 hover:text-gray-700">
+                                    <i class="fas fa-times text-xl"></i>
+                                </button>
+                            </div>
+                            
+                            <div id="application-details-content">
+                                <!-- Контент загружается через JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пользователи -->
+            <div class="bg-white rounded-xl shadow overflow-hidden mb-8">
+                <div class="p-6 border-b">
+                    <h3 class="text-xl font-bold">Пользователи</h3>
+                </div>
+                
+                <div class="table-container">
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Роль</th>
+                                <th>Дата регистрации</th>
+                                <th>Заявок</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table">
+                            <!-- Данные загружаются через JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Графики -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-xl font-bold mb-6">Заявки по услугам</h3>
+                    <div id="service-chart" class="h-64 flex items-center justify-center">
+                        <p class="text-gray-500">Загрузка графика...</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-xl font-bold mb-6">Статусы заявок</h3>
+                    <div id="status-chart" class="h-64 flex items-center justify-center">
+                        <p class="text-gray-500">Загрузка графика...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Экспорт данных -->
+            <div class="bg-white rounded-xl shadow p-6">
+                <h3 class="text-xl font-bold mb-6">Экспорт данных</h3>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="exportData('applications')" 
+                            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-file-export mr-2"></i>Экспорт заявок (CSV)
+                    </button>
+                    <button onclick="exportData('users')" 
+                            class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                        <i class="fas fa-user-edit mr-2"></i>Экспорт пользователей (CSV)
+                    </button>
+                    <button onclick="exportData('statistics')" 
+                            class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                        <i class="fas fa-chart-bar mr-2"></i>Экспорт статистики (JSON)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p>&copy; 2025 QualityGuard. Административная панель. Доступ ограничен.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="db/database.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

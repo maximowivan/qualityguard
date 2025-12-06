@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - QualityGuard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold text-gray-800">Quality<span class="text-blue-600">Guard</span></h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="about.html" class="nav-link">О нас</a>
+                    <a href="services.html" class="nav-link active">Услуги</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                    <a href="admin.html" class="nav-link text-red-600" id="admin-link">Админ</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="openAuthModal('login')" 
+                            class="px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                        Вход
+                    </button>
+                    <button onclick="openAuthModal('register')" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Регистрация
+                    </button>
+                </div>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="nav-link-mobile">Главная</a>
+                    <a href="about.html" class="nav-link-mobile">О нас</a>
+                    <a href="services.html" class="nav-link-mobile active">Услуги</a>
+                    <a href="contacts.html" class="nav-link-mobile">Контакты</a>
+                    <a href="admin.html" class="nav-link-mobile text-red-600">Админ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Заголовок -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Наши услуги</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Полный спектр услуг по контролю качества IT-проектов
+            </p>
+        </div>
+
+        <!-- Услуги -->
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <!-- Тестирование ПО -->
+            <div class="service-card bg-white rounded-2xl shadow-lg p-8">
+                <div class="flex items-start mb-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-6">
+                        <i class="fas fa-bug text-blue-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Тестирование ПО</h3>
+                        <p class="text-blue-600 font-medium">от 50 000 руб.</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Комплексное тестирование программного обеспечения всех типов: 
+                    веб-приложений, мобильных приложений, десктопных программ.
+                </p>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Функциональное тестирование</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Тестирование UI/UX</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Регрессионное тестирование</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Кросс-браузерное тестирование</span>
+                    </li>
+                </ul>
+                
+                <button onclick="openContactModal()" 
+                        class="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    Заказать услугу
+                </button>
+            </div>
+
+            <!-- Автоматизация QA -->
+            <div class="service-card bg-white rounded-2xl shadow-lg p-8">
+                <div class="flex items-start mb-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mr-6">
+                        <i class="fas fa-robot text-green-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Автоматизация QA</h3>
+                        <p class="text-green-600 font-medium">от 80 000 руб.</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Разработка и внедрение систем автоматизированного тестирования 
+                    для ускорения процессов контроля качества.
+                </p>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Автоматизация тест-кейсов</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>CI/CD интеграция</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Нагрузочное тестирование</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Мониторинг качества</span>
+                    </li>
+                </ul>
+                
+                <button onclick="openContactModal()" 
+                        class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                    Заказать услугу
+                </button>
+            </div>
+
+            <!-- Аудит безопасности -->
+            <div class="service-card bg-white rounded-2xl shadow-lg p-8">
+                <div class="flex items-start mb-6">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mr-6">
+                        <i class="fas fa-shield-alt text-red-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Аудит безопасности</h3>
+                        <p class="text-red-600 font-medium">от 120 000 руб.</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Комплексная проверка безопасности IT-систем, 
+                    выявление уязвимостей и рекомендации по их устранению.
+                </p>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Пентестинг (тестирование на проникновение)</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Анализ исходного кода</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Проверка на соответствие стандартам</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Аудит конфигурации серверов</span>
+                    </li>
+                </ul>
+                
+                <button onclick="openContactModal()" 
+                        class="w-full py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
+                    Заказать услугу
+                </button>
+            </div>
+
+            <!-- Консалтинг -->
+            <div class="service-card bg-white rounded-2xl shadow-lg p-8">
+                <div class="flex items-start mb-6">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mr-6">
+                        <i class="fas fa-chart-line text-purple-600 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Консалтинг</h3>
+                        <p class="text-purple-600 font-medium">от 40 000 руб./мес</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 mb-6">
+                    Профессиональные консультации по построению процессов контроля качества 
+                    и оптимизации работы QA-отделов.
+                </p>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Внедрение процессов QA</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Обучение команды</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Аудит существующих процессов</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-green-500 mr-3"></i>
+                        <span>Подбор методологий тестирования</span>
+                    </li>
+                </ul>
+                
+                <button onclick="openContactModal()" 
+                        class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                    Заказать услугу
+                </button>
+            </div>
+        </div>
+
+        <!-- Процесс работы -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 mb-16">
+            <h3 class="text-3xl font-bold text-center mb-12">Процесс работы</h3>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">1</span>
+                    </div>
+                    <h4 class="font-bold mb-3">Консультация</h4>
+                    <p class="text-gray-600 text-sm">Анализ требований и постановка задач</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-green-600">2</span>
+                    </div>
+                    <h4 class="font-bold mb-3">Планирование</h4>
+                    <p class="text-gray-600 text-sm">Разработка стратегии и плана тестирования</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-yellow-600">3</span>
+                    </div>
+                    <h4 class="font-bold mb-3">Реализация</h4>
+                    <p class="text-gray-600 text-sm">Выполнение работ и промежуточные отчеты</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-purple-600">4</span>
+                    </div>
+                    <h4 class="font-bold mb-3">Сдача проекта</h4>
+                    <p class="text-gray-600 text-sm">Финальный отчет и рекомендации</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Таблица сравнения -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-center mb-8">Сравнение пакетов услуг</h3>
+            
+            <div class="table-container">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th class="w-1/4">Характеристика</th>
+                            <th class="w-1/4">Стандарт</th>
+                            <th class="w-1/4">Профессиональный</th>
+                            <th class="w-1/4">Премиум</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">Функциональное тестирование</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Автоматизация тестов</td>
+                            <td>-</td>
+                            <td>до 50 тест-кейсов</td>
+                            <td>неограниченно</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Нагрузочное тестирование</td>
+                            <td>-</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Аудит безопасности</td>
+                            <td>-</td>
+                            <td>базовый</td>
+                            <td>полный</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Ежемесячные отчеты</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>неограниченно</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Приоритетная поддержка</td>
+                            <td>-</td>
+                            <td>✓</td>
+                            <td>✓ 24/7</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">Стоимость в месяц</td>
+                            <td class="font-bold">50 000 руб.</td>
+                            <td class="font-bold">120 000 руб.</td>
+                            <td class="font-bold">250 000 руб.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button onclick="openContactModal()" 
+                                        class="w-full py-2 bg-blue-600 text-white rounded-lg">
+                                    Заказать
+                                </button>
+                            </td>
+                            <td>
+                                <button onclick="openContactModal()" 
+                                        class="w-full py-2 bg-green-600 text-white rounded-lg">
+                                    Заказать
+                                </button>
+                            </td>
+                            <td>
+                                <button onclick="openContactModal()" 
+                                        class="w-full py-2 bg-purple-600 text-white rounded-lg">
+                                    Заказать
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-blue-400 text-2xl mr-3"></i>
+                        <h3 class="text-2xl font-bold">Quality<span class="text-blue-400">Guard</span></h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Лидер в области контроля качества IT-проектов с 2015 года.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Услуги</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Тестирование ПО</a></li>
+                        <li><a href="#" class="hover:text-white transition">Автоматизация QA</a></li>
+                        <li><a href="#" class="hover:text-white transition">Аудит безопасности</a></li>
+                        <li><a href="#" class="hover:text-white transition">Консалтинг</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Контакты</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-blue-400"></i>
+                            Москва, ул. Тестировщиков, 15
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-blue-400"></i>
+                            +7 (495) 123-45-67
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            info@qualityguard.ru
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Подписка</h4>
+                    <p class="text-gray-400 mb-4">Подпишитесь на наши новости</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email" 
+                               class="flex-grow p-3 rounded-l-lg text-gray-800">
+                        <button class="bg-blue-600 px-4 rounded-r-lg hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 QualityGuard. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="db/database.js"></script>
+</body>
+</html>
